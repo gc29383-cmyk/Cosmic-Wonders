@@ -25,7 +25,7 @@
             opacity: 0.25;
             filter: blur(40px);
             pointer-events: none;
-            z-index: 2; /* behind stars, above gradient */
+            z-index: 2;
         }
 
         .nebula1 {
@@ -58,7 +58,7 @@
             height: 100%;
             overflow: hidden;
             pointer-events: none;
-            z-index: 3; /* above nebula, below logo */
+            z-index: 3;
         }
 
         .star {
@@ -73,13 +73,11 @@
                 twinkle 2s ease-in-out infinite;
         }
 
-        /* Downward drift */
         @keyframes fall {
             from { transform: translateY(0); }
             to { transform: translateY(300px); }
         }
 
-        /* Twinkling brightness */
         @keyframes twinkle {
             0%   { opacity: 0.3; }
             50%  { opacity: 1; }
@@ -141,12 +139,46 @@
             font-size: 1.1rem;
             color: #ccc;
         }
+
+        /* --- COSMIC GLYPH FOOTER --- */
+        footer {
+            margin-top: 60px;
+            padding: 40px 20px;
+            text-align: center;
+            background: radial-gradient(circle at 50% 70%, #0d1b2a, #000);
+            border-top: 2px solid rgba(255,255,255,0.15);
+        }
+
+        .glyphs {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 20px;
+        }
+
+        .glyph {
+            font-size: 2.2rem;
+            opacity: 0.8;
+            animation: glyphPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes glyphPulse {
+            0%   { opacity: 0.4; transform: scale(1); }
+            50%  { opacity: 1; transform: scale(1.25); }
+            100% { opacity: 0.4; transform: scale(1); }
+        }
+
+        footer p {
+            color: #aaa;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
     </style>
 </head>
 
 <body>
 
-    <!-- Cosmic Header with Nebula + Stars -->
+    <!-- Cosmic Header -->
     <header>
         <div class="nebula nebula1"></div>
         <div class="nebula nebula2"></div>
@@ -170,6 +202,16 @@
         </p>
     </section>
 
+    <!-- Cosmic Glyph Footer -->
+    <footer>
+        <div class="glyphs">
+            <div class="glyph">✦</div>
+            <div class="glyph">☉</div>
+            <div class="glyph">✺</div>
+        </div>
+        <p>© 2026 Cosmic Wonders Universe</p>
+    </footer>
+
     <!-- STAR CREATION SCRIPT -->
     <script>
         const container = document.getElementById('starfield');
@@ -180,10 +222,9 @@
             star.style.left = Math.random() * 100 + '%';
             star.style.top = Math.random() * 100 + '%';
 
-            /* Randomize twinkle timing */
             star.style.animationDelay =
-                (Math.random() * 8) + 's, ' +   /* fall delay */
-                (Math.random() * 2) + 's';     /* twinkle delay */
+                (Math.random() * 8) + 's, ' +
+                (Math.random() * 2) + 's';
 
             container.appendChild(star);
         }
