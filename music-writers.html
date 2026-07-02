@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Music Writers • Cosmic Wonders</title>
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background-color: #000;
+            color: #fff;
+            line-height: 1.6;
+        }
+
+        /* --- DRIFTING NEBULA CLOUDS --- */
+        .nebula {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 200%;
+            height: 200%;
+            background-size: cover;
+            opacity: 0.25;
+            filter: blur(40px);
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .nebula1 {
+            background-image: url('https://images.unsplash.com/photo-1444703686981-a3abbc4d4fe3?auto=format&fit=crop&w=1200&q=60');
+            animation: nebulaDrift1 120s linear infinite;
+        }
+
+        .nebula2 {
+            background-image: url('https://images.unsplash.com/photo-1462331940025-496dfbfc7564?auto=format&fit=crop&w=1200&q=60');
+            opacity: 0.18;
+            animation: nebulaDrift2 160s linear infinite;
+        }
+
+        @keyframes nebulaDrift1 {
+            from { transform: translateX(0); }
+            to   { transform: translateX(-300px); }
+        }
+
+        @keyframes nebulaDrift2 {
+            from { transform: translateX(0); }
+            to   { transform: translateX(300px); }
+        }
+
+        /* --- STARFIELD --- */
+        .starfield {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            pointer-events: none;
+            z-index: 3;
+        }
+
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            opacity: 0.7;
+            animation:
+                fall 8s linear infinite,
+                twinkle 2s ease-in-out infinite;
+        }
+
+        @keyframes fall {
+            from { transform: translateY(0); }
+            to { transform: translateY(300px); }
+        }
+
+        @keyframes twinkle {
+            0%   { opacity: 0.3; }
+            50%  { opacity: 1; }
+            100% { opacity: 0.3; }
+        }
+
+        /* --- HEADER --- */
+        header {
+            text-align: center;
+            padding: 60px 20px 40px;
+            position: relative;
+            overflow: hidden;
+            background: radial-gradient(circle at 50% 30%, #1a237e, #0d47a1, #000000);
+            border-bottom: 2px solid rgba(255,255,255,0.15);
+        }
+
+        header img {
+            width: 320px;
+            max-width: 95%;
+            display: block;
+            margin: 0 auto;
+            filter: drop-shadow(0 0 18px rgba(74,124,255,0.7));
+            position: relative;
+            z-index: 10;
+        }
+
+        header h1 {
+            font-size: 2.4rem;
+            margin-top: 20px;
+            color: #fff;
+            letter-spacing: 2px;
+            z-index: 10;
+            position: relative;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            margin-top: 10px;
+            color: #e0e0e0;
+            z-index: 10;
+            position: relative;
+        }
+
+        /* --- STICKY NAV --- */
+        nav {
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            background: rgba(10, 20, 40, 0.85);
+            backdrop-filter: blur(6px);
+            border-bottom: 1px solid rgba(255,255,255,0.15);
+            padding: 12px 0;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        nav a {
+            color: #e0e0e0;
+            text-decoration: none;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #ffeb3b;
+            text-shadow: 0 0 8px #ffeb3b;
+        }
+
+        /* --- CONTENT --- */
+        section {
+            padding: 30px 20px;
+            max-width: 900px;
+            margin: 0 auto;
+            position: relative;
+            z-index: 10;
+        }
+
+        h2 {
+            font-size: 2rem;
+            color: #ffeb3b;
+            margin-bottom: 10px;
+        }
+
+        .writer-card {
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(255,255,255,0.15);
+            padding: 20px;
+            border-radius: 12px;
+            margin-bottom: 25px;
+            backdrop-filter: blur(6px);
+        }
+
+        .writer-card h3 {
+            margin: 0;
+            font-size: 1.4rem;
+            color: #fff;
+        }
+
+        .writer-card p {
+            color: #ccc;
+            margin-top: 10px;
+        }
+
+        .promo-art {
+            width: 100%;
+            height: 180px;
+            background: radial-gradient(circle, #333, #000);
+            border-radius: 10px;
+            margin-top: 15px;
+            box-shadow: 0 0 20px rgba(255,255,255,0.2);
+        }
+
+        /* --- FOOTER --- */
+        footer {
+            margin-top: 60px;
+            padding: 40px 20px;
+            text-align: center;
+            background: radial-gradient(circle at 50% 70%, #0d1b2a, #000);
+            border-top: 2px solid rgba(255,255,255,0.15);
+        }
+
+        .glyphs {
+            display: flex;
+            justify-content: center;
+            gap: 40px;
+            margin-bottom: 20px;
+        }
+
+        .glyph {
+            font-size: 2.2rem;
+            opacity: 0.8;
+            animation: glyphPulse 3s ease-in-out infinite;
+        }
+
+        @keyframes glyphPulse {
+            0%   { opacity: 0.4; transform: scale(1); }
+            50%  { opacity: 1; transform: scale(1.25); }
+            100% { opacity: 0.4; transform: scale(1); }
+        }
+
+        footer p {
+            color: #aaa;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Cosmic Header -->
+    <header>
+        <div class="nebula nebula1"></div>
+        <div class="nebula nebula2"></div>
+        <div class="starfield" id="starfield"></div>
+
+        <img src="copilot_image_1782957471548.jpeg" alt="Cosmic Wonders Logo">
+        <h1>Music Writers</h1>
+        <p>Creators of Sound, Story, and Cosmic Rhythm</p>
+    </header>
+
+    <!-- Sticky Navigation -->
+    <nav>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="#writers">Writers</a></li>
+            <li><a href="#resources">Resources</a></li>
+        </ul>
+    </nav>
+
+    <!-- Main Content -->
+    <section id="writers">
+        <h2>Featured Music Writers</h2>
+
+        <div class="writer-card">
+            <h3>Writer Name</h3>
+            <p>A short description of the writer, their style, their cosmic influence, or their role in the Cosmic Wonders universe.</p>
+            <div class="promo-art"></div>
+        </div>
+
+        <div class="writer-card">
+            <h3>Writer Name</h3>
+            <p>Another writer profile. You can add promo art, links, or embed audio samples later.</p>
+            <div class="promo-art"></div>
+        </div>
+    </section>
+
+    <section id="resources">
+        <h2>Music Writer Resources</h2>
+        <p>Links, tools, guides, and cosmic inspiration for music creators.</p>
+
+        <ul>
+            <li>Artist Promo Templates</li>
+            <li>Lyric Writing Guides</li>
+            <li>Music Theory Basics</li>
+            <li>Cosmic Sound Design Tips</li>
+        </ul>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="glyphs">
+            <div class="glyph">✦</div>
+            <div class="glyph">☉</div>
+            <div class="glyph">✺</div>
+        </div>
+        <p>© 2026 Cosmic Wonders Universe</p>
+    </footer>
+
+    <!-- STAR CREATION SCRIPT -->
+    <script>
+        const container = document.getElementById('starfield');
+
+        for (let i = 0; i < 120; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+
+            star.style.animationDelay =
+                (Math.random() * 8) + 's, ' +
+                (Math.random() * 2) + 's';
+
+            container.appendChild(star);
+        }
+    </script>
+
+</body>
+</html>
