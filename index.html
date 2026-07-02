@@ -14,10 +14,25 @@
             line-height: 1.6;
         }
 
+        /* Starfield Animation */
+        @keyframes starfield {
+            from { background-position: 0 0; }
+            to { background-position: -1000px 1000px; }
+        }
+
         header {
             text-align: center;
             padding: 60px 20px;
-            background: radial-gradient(circle at 50% 30%, #1a237e, #0d47a1, #000000);
+            position: relative;
+            overflow: hidden;
+
+            /* Cosmic gradient + animated stars */
+            background:
+                radial-gradient(circle at 50% 30%, #1a237e, #0d47a1, #000000),
+                url('https://upload.wikimedia.org/wikipedia/commons/9/95/StarfieldSimulation.gif');
+
+            background-size: cover, 800px 800px;
+            animation: starfield 60s linear infinite;
             border-bottom: 2px solid rgba(255,255,255,0.15);
         }
 
@@ -63,7 +78,7 @@
 
 <body>
 
-    <!-- Cosmic Header -->
+    <!-- Cosmic Header with Starfield -->
     <header>
         <img src="copilot_image_1782957471548.jpeg"
              alt="Cosmic Wonders Logo">
