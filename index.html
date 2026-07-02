@@ -14,25 +14,61 @@
             line-height: 1.6;
         }
 
-        /* Starfield Animation */
-        @keyframes starfield {
-            from { background-position: 0 0; }
-            to { background-position: -1000px 1000px; }
+        /* --- STARFIELD LAYERS --- */
+        .stars, .stars2, .stars3 {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 200%;
+            height: 200%;
+            background-repeat: repeat;
+            background-size: contain;
+            pointer-events: none;
         }
 
+        .stars {
+            background-image: radial-gradient(white 1px, transparent 1px);
+            background-size: 3px 3px;
+            animation: drift1 60s linear infinite;
+            opacity: 0.4;
+        }
+
+        .stars2 {
+            background-image: radial-gradient(white 1px, transparent 1px);
+            background-size: 2px 2px;
+            animation: drift2 120s linear infinite;
+            opacity: 0.3;
+        }
+
+        .stars3 {
+            background-image: radial-gradient(white 1px, transparent 1px);
+            background-size: 1px 1px;
+            animation: drift3 180s linear infinite;
+            opacity: 0.2;
+        }
+
+        @keyframes drift1 {
+            from { transform: translate(0,0); }
+            to { transform: translate(-500px, 500px); }
+        }
+
+        @keyframes drift2 {
+            from { transform: translate(0,0); }
+            to { transform: translate(-300px, 300px); }
+        }
+
+        @keyframes drift3 {
+            from { transform: translate(0,0); }
+            to { transform: translate(-200px, 200px); }
+        }
+
+        /* --- HEADER --- */
         header {
             text-align: center;
             padding: 60px 20px;
             position: relative;
             overflow: hidden;
-
-            /* Cosmic gradient + animated stars */
-            background:
-                radial-gradient(circle at 50% 30%, #1a237e, #0d47a1, #000000),
-                url('https://upload.wikimedia.org/wikipedia/commons/9/95/StarfieldSimulation.gif');
-
-            background-size: cover, 800px 800px;
-            animation: starfield 60s linear infinite;
+            background: radial-gradient(circle at 50% 30%, #1a237e, #0d47a1, #000000);
             border-bottom: 2px solid rgba(255,255,255,0.15);
         }
 
@@ -42,6 +78,8 @@
             display: block;
             margin: 0 auto;
             filter: drop-shadow(0 0 18px rgba(74,124,255,0.7));
+            position: relative;
+            z-index: 10;
         }
 
         header h1 {
@@ -49,14 +87,19 @@
             margin-top: 25px;
             letter-spacing: 2px;
             color: white;
+            position: relative;
+            z-index: 10;
         }
 
         header p {
             font-size: 1.2rem;
             margin-top: 10px;
             color: #e0e0e0;
+            position: relative;
+            z-index: 10;
         }
 
+        /* --- CONTENT --- */
         section {
             padding: 30px 20px;
             max-width: 800px;
@@ -78,8 +121,12 @@
 
 <body>
 
-    <!-- Cosmic Header with Starfield -->
+    <!-- Cosmic Header with TRUE Starfield -->
     <header>
+        <div class="stars"></div>
+        <div class="stars2"></div>
+        <div class="stars3"></div>
+
         <img src="copilot_image_1782957471548.jpeg"
              alt="Cosmic Wonders Logo">
 
