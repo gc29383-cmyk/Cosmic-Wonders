@@ -14,31 +14,27 @@
             line-height: 1.6;
         }
 
-        /* --- TRUE MOBILE STARFIELD --- */
+        /* --- PURE CSS STARFIELD (no JavaScript needed) --- */
         .starfield {
             position: absolute;
             top: 0;
             left: 0;
-            width: 100%;
-            height: 100%;
-            overflow: hidden;
+            width: 200%;
+            height: 200%;
+            background-image:
+                radial-gradient(white 1px, transparent 1px),
+                radial-gradient(white 1px, transparent 1px),
+                radial-gradient(white 1px, transparent 1px);
+            background-size: 3px 3px, 2px 2px, 1px 1px;
+            animation: drift 60s linear infinite;
+            opacity: 0.5;
             pointer-events: none;
             z-index: 1;
         }
 
-        .star {
-            position: absolute;
-            width: 2px;
-            height: 2px;
-            background: white;
-            border-radius: 50%;
-            opacity: 0.8;
-            animation: drift 12s linear infinite;
-        }
-
         @keyframes drift {
-            from { transform: translateY(0); }
-            to { transform: translateY(200px); }
+            from { transform: translate(0,0); }
+            to { transform: translate(-500px, 500px); }
         }
 
         /* --- HEADER --- */
@@ -101,9 +97,9 @@
 
 <body>
 
-    <!-- Cosmic Header -->
+    <!-- Cosmic Header with PURE CSS Starfield -->
     <header>
-        <div class="starfield" id="starfield"></div>
+        <div class="starfield"></div>
 
         <img src="copilot_image_1782957471548.jpeg" alt="Cosmic Wonders Logo">
 
@@ -113,7 +109,7 @@
 
     <!-- Issue #1 Section -->
     <section>
-        <h2>Issue #1 — Mr. Wonder</h2>
+        <h2>#1 — Mr. Wonder</h2>
         <p class="issue-description">
             The Cosmic Wonders universe begins with Mr. Wonder, the host and father-brand avatar 
             who guides readers through strange light, hidden truths, and the mysteries woven 
@@ -121,20 +117,6 @@
             with impossible stories waiting to be told.
         </p>
     </section>
-
-    <!-- STAR CREATION SCRIPT (moved outside header so it actually runs) -->
-    <script>
-        const container = document.getElementById('starfield');
-
-        for (let i = 0; i < 100; i++) {
-            const star = document.createElement('div');
-            star.className = 'star';
-            star.style.left = Math.random() * 100 + '%';
-            star.style.top = Math.random() * 100 + '%';
-            star.style.animationDelay = (Math.random() * 12) + 's';
-            container.appendChild(star);
-        }
-    </script>
 
 </body>
 </html>
