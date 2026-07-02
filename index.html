@@ -112,9 +112,12 @@
             z-index: 10;
         }
 
-        /* --- NAVIGATION BAR --- */
+        /* --- STICKY NAVIGATION BAR --- */
         nav {
-            background: rgba(10, 20, 40, 0.7);
+            position: sticky;
+            top: 0;
+            z-index: 20;
+            background: rgba(10, 20, 40, 0.85);
             backdrop-filter: blur(6px);
             border-bottom: 1px solid rgba(255,255,255,0.15);
             padding: 12px 0;
@@ -142,7 +145,6 @@
             text-shadow: 0 0 8px #ffeb3b;
         }
 
-        /* Mobile stacking */
         @media (max-width: 600px) {
             nav ul {
                 flex-direction: column;
@@ -218,7 +220,7 @@
         <p>A Universe of Stories, Secrets, and Strange Light</p>
     </header>
 
-    <!-- Navigation Bar -->
+    <!-- Sticky Navigation Bar -->
     <nav>
         <ul>
             <li><a href="#home">Home</a></li>
