@@ -112,6 +112,44 @@
             z-index: 10;
         }
 
+        /* --- NAVIGATION BAR --- */
+        nav {
+            background: rgba(10, 20, 40, 0.7);
+            backdrop-filter: blur(6px);
+            border-bottom: 1px solid rgba(255,255,255,0.15);
+            padding: 12px 0;
+        }
+
+        nav ul {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+        }
+
+        nav a {
+            color: #e0e0e0;
+            text-decoration: none;
+            font-size: 1.1rem;
+            letter-spacing: 1px;
+            transition: color 0.3s ease, text-shadow 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #ffeb3b;
+            text-shadow: 0 0 8px #ffeb3b;
+        }
+
+        /* Mobile stacking */
+        @media (max-width: 600px) {
+            nav ul {
+                flex-direction: column;
+                gap: 12px;
+            }
+        }
+
         /* --- CONTENT --- */
         section {
             padding: 30px 20px;
@@ -168,7 +206,7 @@
 
 <body>
 
-    <!-- Cosmic Header (IMAGE ONLY) -->
+    <!-- Cosmic Header -->
     <header>
         <div class="nebula nebula1"></div>
         <div class="nebula nebula2"></div>
@@ -180,8 +218,18 @@
         <p>A Universe of Stories, Secrets, and Strange Light</p>
     </header>
 
+    <!-- Navigation Bar -->
+    <nav>
+        <ul>
+            <li><a href="#home">Home</a></li>
+            <li><a href="#issue1">Issue #1</a></li>
+            <li><a href="#universe">Universe</a></li>
+            <li><a href="#characters">Characters</a></li>
+        </ul>
+    </nav>
+
     <!-- Issue #1 Section -->
-    <section>
+    <section id="issue1">
         <h2>#1 — Mr. Wonder</h2>
         <p class="issue-description">
             The Cosmic Wonders universe begins with Mr. Wonder, the host and father-brand avatar 
