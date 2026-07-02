@@ -14,52 +14,31 @@
             line-height: 1.6;
         }
 
-        /* --- STARFIELD LAYERS --- */
-        .stars, .stars2, .stars3 {
+        /* --- TRUE MOBILE STARFIELD --- */
+        .starfield {
             position: absolute;
             top: 0;
             left: 0;
-            width: 200%;
-            height: 200%;
-            background-repeat: repeat;
-            background-size: contain;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
             pointer-events: none;
+            z-index: 1;
         }
 
-        .stars {
-            background-image: radial-gradient(white 1px, transparent 1px);
-            background-size: 3px 3px;
-            animation: drift1 60s linear infinite;
-            opacity: 0.4;
+        .star {
+            position: absolute;
+            width: 2px;
+            height: 2px;
+            background: white;
+            border-radius: 50%;
+            opacity: 0.8;
+            animation: drift 12s linear infinite;
         }
 
-        .stars2 {
-            background-image: radial-gradient(white 1px, transparent 1px);
-            background-size: 2px 2px;
-            animation: drift2 120s linear infinite;
-            opacity: 0.3;
-        }
-
-        .stars3 {
-            background-image: radial-gradient(white 1px, transparent 1px);
-            background-size: 1px 1px;
-            animation: drift3 180s linear infinite;
-            opacity: 0.2;
-        }
-
-        @keyframes drift1 {
-            from { transform: translate(0,0); }
-            to { transform: translate(-500px, 500px); }
-        }
-
-        @keyframes drift2 {
-            from { transform: translate(0,0); }
-            to { transform: translate(-300px, 300px); }
-        }
-
-        @keyframes drift3 {
-            from { transform: translate(0,0); }
-            to { transform: translate(-200px, 200px); }
+        @keyframes drift {
+            from { transform: translateY(0); }
+            to { transform: translateY(200px); }
         }
 
         /* --- HEADER --- */
@@ -82,21 +61,22 @@
             z-index: 10;
         }
 
+        header h1, header p {
+            position: relative;
+            z-index: 10;
+        }
+
         header h1 {
             font-size: 2.8rem;
             margin-top: 25px;
             letter-spacing: 2px;
             color: white;
-            position: relative;
-            z-index: 10;
         }
 
         header p {
             font-size: 1.2rem;
             margin-top: 10px;
             color: #e0e0e0;
-            position: relative;
-            z-index: 10;
         }
 
         /* --- CONTENT --- */
@@ -121,14 +101,23 @@
 
 <body>
 
-    <!-- Cosmic Header with TRUE Starfield -->
+    <!-- Cosmic Header with TRUE Mobile Starfield -->
     <header>
-        <div class="stars"></div>
-        <div class="stars2"></div>
-        <div class="stars3"></div>
+        <div class="starfield">
+            <!-- 100 stars -->
+            <script>
+                for (let i = 0; i < 100; i++) {
+                    const star = document.createElement('div');
+                    star.className = 'star';
+                    star.style.left = Math.random() * 100 + '%';
+                    star.style.top = Math.random() * 100 + '%';
+                    star.style.animationDelay = (Math.random() * 12) + 's';
+                    document.currentScript.parentElement.appendChild(star);
+                }
+            </script>
+        </div>
 
-        <img src="copilot_image_1782957471548.jpeg"
-             alt="Cosmic Wonders Logo">
+        <img src="copilot_image_1782957471548.jpeg" alt="Cosmic Wonders Logo">
 
         <h1>COSMIC WONDERS</h1>
         <p>A Universe of Stories, Secrets, and Strange Light</p>
