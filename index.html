@@ -101,21 +101,9 @@
 
 <body>
 
-    <!-- Cosmic Header with TRUE Mobile Starfield -->
+    <!-- Cosmic Header -->
     <header>
-        <div class="starfield">
-            <!-- 100 stars -->
-            <script>
-                for (let i = 0; i < 100; i++) {
-                    const star = document.createElement('div');
-                    star.className = 'star';
-                    star.style.left = Math.random() * 100 + '%';
-                    star.style.top = Math.random() * 100 + '%';
-                    star.style.animationDelay = (Math.random() * 12) + 's';
-                    document.currentScript.parentElement.appendChild(star);
-                }
-            </script>
-        </div>
+        <div class="starfield" id="starfield"></div>
 
         <img src="copilot_image_1782957471548.jpeg" alt="Cosmic Wonders Logo">
 
@@ -133,6 +121,20 @@
             with impossible stories waiting to be told.
         </p>
     </section>
+
+    <!-- STAR CREATION SCRIPT (moved outside header so it actually runs) -->
+    <script>
+        const container = document.getElementById('starfield');
+
+        for (let i = 0; i < 100; i++) {
+            const star = document.createElement('div');
+            star.className = 'star';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.top = Math.random() * 100 + '%';
+            star.style.animationDelay = (Math.random() * 12) + 's';
+            container.appendChild(star);
+        }
+    </script>
 
 </body>
 </html>
