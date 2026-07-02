@@ -152,6 +152,87 @@
             }
         }
 
+        /* --- SOLAR SYSTEM NAVIGATION --- */
+        .solar-system {
+            position: relative;
+            width: 100%;
+            height: 350px;
+            margin-top: 40px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+
+        /* Red Sun */
+        .sun {
+            width: 120px;
+            height: 120px;
+            background: radial-gradient(circle, #ff3300, #990000);
+            border-radius: 50%;
+            box-shadow: 0 0 40px #ff3300;
+            animation: sunPulse 6s ease-in-out infinite;
+        }
+
+        @keyframes sunPulse {
+            0% { transform: scale(1); }
+            50% { transform: scale(1.08); }
+            100% { transform: scale(1); }
+        }
+
+        /* Orbiting 45 Record Planet */
+        .record-planet {
+            position: absolute;
+            width: 110px;
+            height: 110px;
+            border-radius: 50%;
+            animation: orbit 12s linear infinite;
+            transform-origin: center -180px;
+            text-decoration: none;
+        }
+
+        @keyframes orbit {
+            from { transform: rotate(0deg); }
+            to   { transform: rotate(360deg); }
+        }
+
+        /* Vinyl Grooves */
+        .record-grooves {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: repeating-radial-gradient(
+                circle,
+                #111 0px,
+                #111 2px,
+                #222 3px,
+                #222 4px
+            );
+            border-radius: 50%;
+            animation: spin 6s linear infinite;
+        }
+
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to   { transform: rotate(-360deg); }
+        }
+
+        /* Center Label */
+        .record-label {
+            position: absolute;
+            top: 35%;
+            left: 35%;
+            width: 30%;
+            height: 30%;
+            background: radial-gradient(circle, #ffcc00, #cc9900);
+            border-radius: 50%;
+            box-shadow: 0 0 10px #ffcc00;
+        }
+
+        /* Hover Glow */
+        .record-planet:hover .record-label {
+            box-shadow: 0 0 20px #ffee55;
+        }
+
         /* --- CONTENT --- */
         section {
             padding: 30px 20px;
@@ -229,6 +310,17 @@
             <li><a href="#characters">Characters</a></li>
         </ul>
     </nav>
+
+    <!-- Solar System Navigation -->
+    <div class="solar-system">
+        <div class="sun"></div>
+
+        <!-- 45 Record Planet -->
+        <a href="music-writers.html" class="planet record-planet">
+            <div class="record-grooves"></div>
+            <div class="record-label"></div>
+        </a>
+    </div>
 
     <!-- Issue #1 Section -->
     <section id="issue1">
